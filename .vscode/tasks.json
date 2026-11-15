@@ -1,0 +1,77 @@
+{
+    // Ctrl+Shift+B  = "CP: test" on the file you have open (it's the default build task).
+    // Ctrl+Shift+P -> "Tasks: Run Task" for the others.
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CP: test",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "test", "${file}"],
+            "group": { "kind": "build", "isDefault": true },
+            "presentation": { "reveal": "always", "panel": "dedicated", "clear": true, "focus": false },
+            "problemMatcher": {
+                "base": "$gcc",
+                "fileLocation": "absolute"
+            }
+        },
+        {
+            "label": "CP: test (fast -O2)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "test", "${file}", "--fast"],
+            "group": "build",
+            "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+            "problemMatcher": { "base": "$gcc", "fileLocation": "absolute" }
+        },
+        {
+            "label": "CP: test (float answers, eps 1e-6)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "test", "${file}", "--eps", "1e-6"],
+            "group": "build",
+            "presentation": { "reveal": "always", "panel": "dedicated", "clear": true },
+            "problemMatcher": { "base": "$gcc", "fileLocation": "absolute" }
+        },
+        {
+            "label": "CP: run interactively",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "run", "${file}"],
+            "presentation": { "reveal": "always", "panel": "dedicated", "clear": true, "focus": true },
+            "problemMatcher": { "base": "$gcc", "fileLocation": "absolute" }
+        },
+        {
+            "label": "CP: new problem",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "new", "${input:problemPath}"],
+            "presentation": { "reveal": "always", "panel": "shared" },
+            "problemMatcher": []
+        },
+        {
+            "label": "CP: listen (Competitive Companion)",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "listen"],
+            "isBackground": true,
+            "presentation": { "reveal": "always", "panel": "dedicated" },
+            "problemMatcher": []
+        },
+        {
+            "label": "CP: stats",
+            "type": "process",
+            "command": "python",
+            "args": ["${workspaceFolder}/scripts/cp.py", "stats"],
+            "presentation": { "reveal": "always", "panel": "shared", "clear": true },
+            "problemMatcher": []
+        }
+    ],
+    "inputs": [
+        {
+            "id": "problemPath",
+            "type": "promptString",
+            "description": "Problem path, e.g. atcoder/abc420/c  or  cses/1068_weird_algorithm"
+        }
+    ]
+}

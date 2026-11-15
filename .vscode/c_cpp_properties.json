@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "MinGW",
+            "compilerPath": "C:/TDM-GCC-64/bin/g++.exe",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "windows-gcc-x64",
+            "includePath": ["${workspaceFolder}/lib"],
+            "defines": ["LOCAL"]
+        }
+    ],
+    "version": 4
+}
